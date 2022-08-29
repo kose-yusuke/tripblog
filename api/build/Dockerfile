@@ -1,0 +1,14 @@
+# goバージョン
+FROM golang:1.16.3-alpine
+# アップデートとgitのインストール！！
+RUN apk add --update &&  apk add git
+# appディレクトリの作成
+RUN mkdir /go/src/app
+# ワーキングディレクトリの設定
+WORKDIR /go/src/app
+# ホストのファイルをコンテナの作業ディレクトリに移行
+ADD ./api /go/src/app
+
+RUN go get -u github.com/gin-gonic/gin && \
+  go get github.com/jinzhu/gorm && \
+  go get github.com/jinzhu/gorm/dialects/postgres
