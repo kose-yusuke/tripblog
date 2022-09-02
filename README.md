@@ -2,6 +2,7 @@
 Goを用いたWebアプリ作成
 
 ## ディレクトリ構成
+
 .
 ├── README.md
 ├── api
@@ -37,13 +38,6 @@ Goを用いたWebアプリ作成
 │           └── server.go
 ├── db
 │   ├── pgadmin4
-│   │   ├── azurecredentialcache
-│   │   ├── pgadmin4.db
-│   └── postgres
-│       ├── init.d
-│       └── pgdata
-├── docker-compose.yml
-└── front
 
 ## 技術
 - React/NextJS
