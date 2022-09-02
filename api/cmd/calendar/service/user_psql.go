@@ -1,33 +1,31 @@
-package repository
+package service
 
 import (
     "github.com/gin-gonic/gin"
     "github.com/kose-yusuke/gocrud/api/cmd/db"
-    "github.com/kose-yusuke/gocrud/api/cmd/models"
+    "github.com/kose-yusuke/gocrud/api/cmd/calendar/model"
 )
 
-// Service procides user's behavior
 type UserRepository struct{}
 
-// User is alias of entity.User struct
-type User models.User
+
+type User model.User
 
 type UserProfile struct {
-    Name string
     Id   int
 }
 
-// GetAll is get all User
+
 func (_ UserRepository) GetAll() ([]UserProfile, error) {
     db := db.GetDB()
     var u []UserProfile
-    if err := db.Table("users").Select("name, id").Scan(&u).Error; err != nil {
+    if err := db.Table("users").Select("id").Scan(&u).Error; err != nil {
         return nil, err
     }
     return u, nil
 }
 
-// CreateModel is create User model
+
 func (_ UserRepository) CreateModel(c *gin.Context) (User, error) {
     db := db.GetDB()
     var u User
@@ -40,39 +38,34 @@ func (_ UserRepository) CreateModel(c *gin.Context) (User, error) {
     return u, nil
 }
 
-// GetByID is get a User by ID
-func (_ UserRepository) GetByID(id int) (models.User, error) {
+
+func (_ UserRepository) GetByID(id string) (model.User, error) {
     db := db.GetDB()
-    var me models.User
+    var me model.User
     if err := db.Where("id = ?", id).First(&me).Error; err != nil {
         return me, err
     }
-    var posts []models.Post
-    db.Where("id = ?", id).First(&me)
-    db.Model(&me).Related(&posts)
-    me.Posts = posts
 
     return me, nil
 }
 
-// UpdateByID is update a User
-func (_ UserRepository) UpdateByID(id int, c *gin.Context) (models.User, error) {
+
+func (_ UserRepository) UpdateByID(id string, c *gin.Context) (model.User, error) {
     db := db.GetDB()
-    var u models.User
+    var u model.User
     if err := db.Where("id = ?", id).First(&u).Error; err != nil {
         return u, err
     }
     if err := c.BindJSON(&u); err != nil {
         return u, err
     }
-    u.ID = uint(id)
     db.Save(&u)
 
     return u, nil
 }
 
-// DeleteByID is delete a User by ID
-func (_ UserRepository) DeleteByID(id int) error {
+
+func (_ UserRepository) DeleteByID(id string) error {
     db := db.GetDB()
     var u User
 

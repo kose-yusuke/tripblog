@@ -2,18 +2,17 @@ package controllers
 
 import (
     "net/http"
-    "strconv"
 
     "github.com/gin-gonic/gin"
-    "github.com/kose-yusuke/gocrud/api/cmd/models/repository"
+    "github.com/kose-yusuke/gocrud/api/cmd/calendar/service"
 )
 
-// Controller is user controlller
-type UserController struct{}
+
+type PlanController struct{}
 
 // Index action: GET /users
-func (pc UserController) Index(c *gin.Context) {
-    var u repository.UserRepository
+func (pc PlanController) Index(c *gin.Context) {
+    var u service.PlanRepository
     p, err := u.GetAll()
     if err != nil {
         c.AbortWithStatus(404)
@@ -24,8 +23,8 @@ func (pc UserController) Index(c *gin.Context) {
 }
 
 // Create action: POST /users
-func (pc UserController) Create(c *gin.Context) {
-    var u repository.UserRepository
+func (pc PlanController) Create(c *gin.Context) {
+    var u service.PlanRepository
     p, err := u.CreateModel(c)
 
     if err != nil {
@@ -37,11 +36,10 @@ func (pc UserController) Create(c *gin.Context) {
 }
 
 // Show action: Get /users/:id
-func (pc UserController) Show(c *gin.Context) {
+func (pc PlanController) Show(c *gin.Context) {
     id := c.Params.ByName("id")
-    var u repository.UserRepository
-    idInt, _ := strconv.Atoi(id)
-    user, err := u.GetByID(idInt)
+    var u service.PlanRepository
+    user, err := u.GetByID(id)
 
     if err != nil {
         c.AbortWithStatus(400)
@@ -52,11 +50,10 @@ func (pc UserController) Show(c *gin.Context) {
 }
 
 // Update action: Put /users/:id
-func (pc UserController) Update(c *gin.Context) {
+func (pc PlanController) Update(c *gin.Context) {
     id := c.Params.ByName("id")
-    var u repository.UserRepository
-    idInt, _ := strconv.Atoi(id)
-    p, err := u.UpdateByID(idInt, c)
+    var u service.PlanRepository
+    p, err := u.UpdateByID(id, c)
 
     if err != nil {
         c.AbortWithStatus(404)
@@ -67,11 +64,10 @@ func (pc UserController) Update(c *gin.Context) {
 }
 
 // Delete action: DELETE /users/:id
-func (pc UserController) Delete(c *gin.Context) {
+func (pc PlanController) Delete(c *gin.Context) {
     id := c.Params.ByName("id")
-    var u repository.UserRepository
-    idInt, _ := strconv.Atoi(id)
-    if err := u.DeleteByID(idInt); err != nil {
+    var u service.PlanRepository
+    if err := u.DeleteByID(id); err != nil {
         c.AbortWithStatus(403)
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
         return

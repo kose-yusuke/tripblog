@@ -1,6 +1,6 @@
 # goバージョン
 FROM golang:1.16.3-alpine
-# アップデートとgitのインストール！！
+# アップデートとgitのインストール
 RUN apk add --update &&  apk add git
 # appディレクトリの作成
 RUN mkdir /go/src/app

@@ -43,15 +43,15 @@ services:
     restart: always
 
   pgadmin4:
-    image: dpage/pgadmin4:4.2
+    image: dpage/pgadmin4:6.13
     container_name: pgadmin4
     ports:
       - "8000:80"
     volumes:
       - ./db/pgadmin4:/var/lib/pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: root     # pgAdmin Address
-      PGADMIN_DEFAULT_PASSWORD: root  # pgAdmin Password
+      PGADMIN_DEFAULT_EMAIL: user@domain.com   # pgAdmin Address
+      PGADMIN_DEFAULT_PASSWORD: SuperSecret  # pgAdmin Password
     links:
       - db
     restart: always
