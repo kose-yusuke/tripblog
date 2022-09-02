@@ -3,7 +3,7 @@ Goを用いたWebアプリ作成
 
 ## ディレクトリ構成
 .
-README.md
+├── README.md
 ├── api
 │   ├── build
 │   │   └── Dockerfile
@@ -39,8 +39,6 @@ README.md
 │   ├── pgadmin4
 │   │   ├── azurecredentialcache
 │   │   ├── pgadmin4.db
-│   │   └── storage
-│   │       └── root
 │   └── postgres
 │       ├── init.d
 │       └── pgdata
