@@ -3,7 +3,7 @@ Goを用いたWebアプリ作成
 
 ## ディレクトリ構成
 .
-├── README.md
+README.md
 ├── api
 │   ├── build
 │   │   └── Dockerfile
