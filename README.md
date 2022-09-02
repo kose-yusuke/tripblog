@@ -3,41 +3,6 @@ Goを用いたWebアプリ作成
 
 ## ディレクトリ構成
 
-.
-├── README.md
-├── api
-│   ├── build
-│   │   └── Dockerfile
-│   └── cmd
-│       ├── calendar
-│       │   ├── controllers
-│       │   │   ├── calendar_controller.go
-│       │   │   ├── plan_controller.go
-│       │   │   └── user_controller.go
-│       │   ├── model
-│       │   │   ├── calendar.go
-│       │   │   ├── color.go
-│       │   │   ├── plan.go
-│       │   │   └── user.go
-│       │   └── service
-│       │       ├── calendar_psql.go
-│       │       ├── plan_psql.go
-│       │       └── user_psql.go
-│       ├── db
-│       │   └── db.go
-│       ├── endpoint
-│       │   └── calendar
-│       ├── form
-│       │   └── api
-│       │       ├── post.go
-│       │       └── user.go
-│       ├── go.mod
-│       ├── go.sum
-│       ├── main.go
-│       └── server
-│           └── server.go
-├── db
-│   ├── pgadmin4
 
 ## 技術
 - React/NextJS
