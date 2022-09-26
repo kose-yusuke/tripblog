@@ -1,20 +1,23 @@
 version: "3.7"
 
 services:
-#   front:
-#     container_name: front
-#     build:
-#       context: ./front
-#       dockerfile: Dockerfile
-#     ports:
-#       - 3000:3000
-#     working_dir: /src
-#     volumes:
-#       - ./front:/src
-#     env_file:
-#       - ./front/.env
-#     tty: true
-#     stdin_open: true
+  front:
+    container_name: front
+    build:
+      context: .
+      dockerfile: ./app/Dockerfile
+    ports:
+      - "3000:3000" # 開発用
+      - "4000:4000" # 本番用
+    working_dir: /app
+    volumes:
+      - ./app/src/calapp:/app
+    # env_file:
+    #   - ./app/.env
+    tty: true
+    environment:
+      - WATCHPACK_POLLING=true
+    command: sh -c "yarn start"
 
   api:
     build:

@@ -45,5 +45,15 @@ func router() *gin.Engine {
         c.DELETE("/:id", ctrl.Delete)
     }
 
+    // c := r.Group("/color")
+    // {
+    //     ctrl := controllers.CalController{}
+    //     c.GET("", ctrl.Index)
+    //     c.POST("", ctrl.Create)
+    //     c.GET("/:id", ctrl.Show)
+    //     c.PUT("/:id", ctrl.Update)
+    //     c.DELETE("/:id", ctrl.Delete)
+    // }
+
     return r
 }
