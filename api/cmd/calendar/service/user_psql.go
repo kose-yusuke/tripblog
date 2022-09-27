@@ -4,35 +4,25 @@ import (
     "github.com/gin-gonic/gin"
     "github.com/kose-yusuke/gocrud/api/cmd/db"
     "github.com/kose-yusuke/gocrud/api/cmd/calendar/model"
-    "time"
+    //"time"
 )
 
 type UserRepository struct{}
 
-
-type User model.User
-
-type UserProfile struct {
-    ID              string
-	Name            string
-	Created_at      time.Time
-	Updated_at      time.Time
-}
-
-
 //多分ここが何かおかしい
-func (_ UserRepository) GetAll() ([]UserProfile, error) {
+func (_ UserRepository) GetAll() ([]model.User, error) {
     db := db.GetDB()
-    var u []UserProfile
-    if err := db.Table("users").Select("id").Scan(&u).Error; err != nil {
+    var u []model.User
+    //if err := db.Table("users").Select("id").Scan(&u).Error; err != nil {
+    if err := db.Find(&u).Error; err != nil {
         return nil, err
     }
     return u, nil
 }
 
-func (_ UserRepository) CreateModel(c *gin.Context) (User, error) {
+func (_ UserRepository) CreateModel(c *gin.Context) (model.User, error) {
     db := db.GetDB()
-    var u User
+    var u model.User
     if err := c.BindJSON(&u); err != nil {
         return u, err
     }
@@ -71,7 +61,7 @@ func (_ UserRepository) UpdateByID(id string, c *gin.Context) (model.User, error
 
 func (_ UserRepository) DeleteByID(id string) error {
     db := db.GetDB()
-    var u User
+    var u model.User
 
     if err := db.Where("id = ?", id).Delete(&u).Error; err != nil {
         return err
