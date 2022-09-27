@@ -2,7 +2,7 @@ package model
 
 import (
 	"time"
-	"github.com/google/uuid"
+	//"github.com/google/uuid"
 )
 
 // type Period struct {
@@ -16,30 +16,18 @@ import (
 
 type Plan struct {
 	ID         string
-	CalendarID string
-	UserID     string
-	Name       string
-	Memo       string
-	Color      Color
-	Private    bool
-	Shares     []string
-	IsAllDay bool
-	Begin    time.Time
-	End      time.Time
+	Title      string
+	Start      time.Time
+	End        time.Time
+	Content    string
 }
 
-func NewPlan(calendarID, userID, name, memo string, color Color, private bool, shares []string, isallday bool, begin, end time.Time) Plan {
+func NewPlan(id string,title string, start time.Time, end time.Time, content string) Plan {
 	return Plan{
-		ID:         uuid.New().String(),
-		CalendarID: calendarID,
-		UserID:     userID,
-		Name:       name,
-		Memo:       memo,
-		Color:      color,
-		Private:    private,
-		Shares:     shares,
-		IsAllDay:   isallday,
-		Begin: 		begin,
+		ID:         id,
+		Title:      title,
+		Start: 		start,
 		End:      	end,
+		Content:    content,
 	}
 }

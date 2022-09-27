@@ -37,6 +37,6 @@ func Close() {
 //自動でフィールド作成
 func autoMigration() {
     db.AutoMigrate(&model.User{})
-	//db.AutoMigrate(&model.Plan{})
-    //db.AutoMigrate(&model.Calendar{})
+	db.AutoMigrate(&model.Plan{})
+    db.AutoMigrate(&model.Calendar{})
 }

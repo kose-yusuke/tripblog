@@ -14,16 +14,10 @@ type Plan model.Plan
 
 type PlanDetail struct {
     ID         string
-	CalendarID string
-	UserID     string
-	Name       string
-	Memo       string
-	Color      model.Color
-	Private    bool
-	Shares     []string
-	IsAllDay   bool
-	Begin      time.Time
+	Title      string
+	Start      time.Time
 	End        time.Time
+    Content    string
 }
 
 

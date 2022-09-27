@@ -34,7 +34,7 @@ services:
     image: postgres:14
     container_name: db
     ports:
-      - "5432:5432"
+      - "5434:5434"
     volumes:
       - ./db/postgres/init.d:/docker-entrypoint-initdb.d
       - ./db/postgres/pgdata:/var/lib/postgresql/data

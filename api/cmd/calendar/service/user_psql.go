@@ -4,6 +4,7 @@ import (
     "github.com/gin-gonic/gin"
     "github.com/kose-yusuke/gocrud/api/cmd/db"
     "github.com/kose-yusuke/gocrud/api/cmd/calendar/model"
+    "time"
 )
 
 type UserRepository struct{}
@@ -12,10 +13,14 @@ type UserRepository struct{}
 type User model.User
 
 type UserProfile struct {
-    Id   int
+    ID              string
+	Name            string
+	Created_at      time.Time
+	Updated_at      time.Time
 }
 
 
+//多分ここが何かおかしい
 func (_ UserRepository) GetAll() ([]UserProfile, error) {
     db := db.GetDB()
     var u []UserProfile
@@ -24,7 +29,6 @@ func (_ UserRepository) GetAll() ([]UserProfile, error) {
     }
     return u, nil
 }
-
 
 func (_ UserRepository) CreateModel(c *gin.Context) (User, error) {
     db := db.GetDB()
