@@ -2,7 +2,9 @@ package server
 
 import (
     "github.com/gin-gonic/gin"
+    "github.com/gin-contrib/cors"
     "github.com/kose-yusuke/gocrud/api/cmd/calendar/controllers"
+    "time"
 )
 
 // Init is initialize server
@@ -13,6 +15,8 @@ func Init() {
 
 func router() *gin.Engine {
     r := gin.Default()
+
+    setCors(r)
 
     u := r.Group("/users")
     {
@@ -56,4 +60,14 @@ func router() *gin.Engine {
     // }
 
     return r
+}
+
+func setCors(r *gin.Engine) {
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000"},
+		AllowMethods:     []string{"GET","POST","PUT", "PATCH","DELETE"},
+		AllowHeaders:     []string{"Access-Control-Allow-Headers", "Content-Length", "Content-Type", "Authorization"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 }
