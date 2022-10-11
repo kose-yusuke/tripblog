@@ -1,39 +1,30 @@
 package service
 
 import (
-	"time"
     "github.com/gin-gonic/gin"
     "github.com/kose-yusuke/gocrud/api/cmd/db"
     "github.com/kose-yusuke/gocrud/api/cmd/calendar/model"
+    // "time"
 )
 
 type PlanRepository struct{}
 
-
-type Plan model.Plan
-
-type PlanDetail struct {
-    ID         string
-	Title      string
-	Start      time.Time
-	End        time.Time
-    Content    string
-}
-
-
-func (_ PlanRepository) GetAll() ([]PlanDetail, error) {
+func (_ PlanRepository) GetAll() ([]model.Plan, error) {
     db := db.GetDB()
-    var u []PlanDetail
-    if err := db.Table("plans").Select("id").Scan(&u).Error; err != nil {
-        return nil, err
-    }
+    var u []model.Plan
+    // if err := db.Table("plans").Select("id").Scan(&u).Error; err != nil {
+    //     return nil, err
+    if err := db.Find(&u).Error; err != nil {
+            return nil, err
+        }
     return u, nil
 }
 
 
-func (_ PlanRepository) CreateModel(c *gin.Context) (Plan, error) {
+
+func (_ PlanRepository) CreateModel(c *gin.Context) (model.Plan, error) {
     db := db.GetDB()
-    var u Plan
+    var u model.Plan
     if err := c.BindJSON(&u); err != nil {
         return u, err
     }
@@ -72,7 +63,7 @@ func (_ PlanRepository) UpdateByID(id string, c *gin.Context) (model.Plan, error
 
 func (_ PlanRepository) DeleteByID(id string) error {
     db := db.GetDB()
-    var u Plan
+    var u model.Plan
 
     if err := db.Where("id = ?", id).Delete(&u).Error; err != nil {
         return err
