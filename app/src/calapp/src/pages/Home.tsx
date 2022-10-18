@@ -34,12 +34,12 @@ const HomePage = () => {
         window.confirm(`このイベント「${clickInfo.event.title}」を削除しますか`)
         ) {
         clickInfo.event.remove();
+        
         }
     }, []);
     return(
     <div className="demo-app">
         <div className="demo-app-main">
-        <div>aaa</div>
         <FullCalendar
             plugins={[dayGridPlugin, interactionPlugin]}
             initialView="dayGridMonth"

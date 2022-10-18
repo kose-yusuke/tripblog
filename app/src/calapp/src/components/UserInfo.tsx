@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState} from 'react'
-import { Userlist } from '../models/user'
-//import { Link } from 'react-router-dom'
+import  HomePage from "../pages/Home"
 
 const UserInfo = (props:any) => {
 
@@ -51,7 +50,9 @@ const UserInfo = (props:any) => {
 			</div>
         	);
 			})};
+			<HomePage />
 		</div>
+
 	);	
 }
 

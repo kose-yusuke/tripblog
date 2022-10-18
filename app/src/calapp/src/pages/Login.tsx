@@ -1,6 +1,6 @@
 const LoginPage = () => {
     return(
-        <>bbb</>
+        <>ログインページです</>
     )
 }
 
