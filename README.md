@@ -9,15 +9,15 @@ Goを用いたWebアプリ作成
 5. yarn startでport3000にてlocalサイト起動
 6. docker compose exec api shでバックエンド起動
 7. cd api/cmdの後、go run main.goでAPIサーバー起動
-8. http://localhost:8000/browser/ にてpgadimn起動
+8. http://localhost:8000/browser/ にてpgadmin起動
 
 APIの起動は逐次Postmanで確認可能(エンドポイント:http://localhost:8080)
 
-##サイトのRoute
-calendarサイト:http://localhost:3000/home
-todoサイト:http://localhost:3000/todo
-api起動テストサイト:http://localhost:3000/user
-login:http://localhost:3000/login
+## サイトのRoute
+- calendarサイト:http://localhost:3000/home
+- todoサイト:http://localhost:3000/todo
+- api起動テストサイト:http://localhost:3000/user
+- login:http://localhost:3000/login
 
 ## ディレクトリ構成
 
