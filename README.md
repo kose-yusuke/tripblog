@@ -1,4 +1,4 @@
-# gocrud
+# TripBlog
 Goを用いたWebアプリ作成
 
 ## 立ち上げ

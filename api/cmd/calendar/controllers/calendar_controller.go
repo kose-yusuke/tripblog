@@ -4,7 +4,7 @@ import (
     "net/http"
 
     "github.com/gin-gonic/gin"
-    "github.com/kose-yusuke/gocrud/api/cmd/calendar/service"
+    "github.com/kose-yusuke/tripblog/api/cmd/calendar/service"
 )
 
 

@@ -3,7 +3,7 @@ package db
 import (
     "github.com/jinzhu/gorm"
     _ "github.com/jinzhu/gorm/dialects/postgres" // Use PostgreSQL in gorm
-    "github.com/kose-yusuke/gocrud/api/cmd/calendar/model"
+    "github.com/kose-yusuke/tripblog/api/cmd/calendar/model"
 )
 
 var (
@@ -36,7 +36,7 @@ func Close() {
 
 //自動でフィールド作成
 func autoMigration() {
-    db.AutoMigrate(&model.User{})
+    db.AutoMigrate(&model.User{},&model.Plan{})
 	db.AutoMigrate(&model.Plan{})
     db.AutoMigrate(&model.Calendar{})
 }

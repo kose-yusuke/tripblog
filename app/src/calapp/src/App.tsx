@@ -4,6 +4,7 @@ import HomePage from './pages/Home'
 import LoginPage from './pages/Login'
 import UserInfo from './components/UserInfo'
 import TodoDashboard from './pages/Dashboard'
+import Whoops404 from './pages/Whoops404'
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/home" element={<HomePage/>} />
         <Route path="/user" element={<UserInfo/>} />
         <Route path="/todo" element={<TodoDashboard />} />
+        <Route path="*" element={<Whoops404 />} />
       </Routes>
     </BrowserRouter>
   );

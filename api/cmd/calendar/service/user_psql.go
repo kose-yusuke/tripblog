@@ -2,19 +2,18 @@ package service
 
 import (
     "github.com/gin-gonic/gin"
-    "github.com/kose-yusuke/gocrud/api/cmd/db"
-    "github.com/kose-yusuke/gocrud/api/cmd/calendar/model"
+    "github.com/kose-yusuke/tripblog/api/cmd/db"
+    "github.com/kose-yusuke/tripblog/api/cmd/calendar/model"
     //"time"
 )
 
 type UserRepository struct{}
 
-//多分ここが何かおかしい
 func (_ UserRepository) GetAll() ([]model.User, error) {
     db := db.GetDB()
     var u []model.User
     //if err := db.Table("users").Select("id").Scan(&u).Error; err != nil {
-    if err := db.Find(&u).Error; err != nil {
+    if err := db.Model(&model.User{}).Preload("Plans").Find(&u).Error; err != nil {
         return nil, err
     }
     return u, nil

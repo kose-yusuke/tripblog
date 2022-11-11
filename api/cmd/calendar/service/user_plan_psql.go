@@ -2,8 +2,8 @@ package service
 
 import (
     "github.com/gin-gonic/gin"
-    "github.com/kose-yusuke/gocrud/api/cmd/db"
-    "github.com/kose-yusuke/gocrud/api/cmd/calendar/model"
+    "github.com/kose-yusuke/tripblog/api/cmd/db"
+    "github.com/kose-yusuke/tripblog/api/cmd/calendar/model"
 )
 
 type CalRepository struct{}

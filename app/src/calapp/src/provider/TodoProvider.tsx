@@ -18,6 +18,7 @@ import {
   
   export const TodoContext = createContext<ProviderType>({} as ProviderType)
   
+  //カスタムプロバイダー(ステートを保持するコンポーネントでコンテキストプロバイダーを描画するため)
   export const TodoProvider = (props: PropType) => {
     const { children } = props
   

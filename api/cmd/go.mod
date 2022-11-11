@@ -1,4 +1,4 @@
-module github.com/kose-yusuke/gocrud/api/cmd
+module github.com/kose-yusuke/tripblog/api/cmd
 
 go 1.16
 

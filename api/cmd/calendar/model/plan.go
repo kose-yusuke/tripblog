@@ -15,19 +15,21 @@ import (
 
 
 type Plan struct {
-	ID         string
-	Title      string
-	Start      time.Time
-	End        time.Time
-	Content    string
+	Id         string `json:"id"`
+	Title      string `json:"title"`
+	Start      time.Time `json:"start"`
+	End        time.Time `json:"end"`
+	UserID	   string `json:"userid"`
+	// Content    string
 }
 
-func NewPlan(id string,title string, start time.Time, end time.Time, content string) Plan {
+func NewPlan(id string,title string, start time.Time, end time.Time,userid string) Plan {
 	return Plan{
-		ID:         id,
+		Id:         id,
 		Title:      title,
 		Start: 		start,
 		End:      	end,
-		Content:    content,
+		UserID: 	userid,
+		// Content:    content,
 	}
 }

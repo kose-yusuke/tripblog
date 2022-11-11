@@ -3,7 +3,7 @@ package server
 import (
     "github.com/gin-gonic/gin"
     "github.com/gin-contrib/cors"
-    "github.com/kose-yusuke/gocrud/api/cmd/calendar/controllers"
+    "github.com/kose-yusuke/tripblog/api/cmd/calendar/controllers"
     "time"
 )
 
